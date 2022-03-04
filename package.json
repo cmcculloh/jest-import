@@ -1,0 +1,18 @@
+{
+  "name": "jest-import",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": "./index.js",
+  "license": "MIT",
+  "dependencies": {
+    "string-width": "^5.1.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
