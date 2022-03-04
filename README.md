@@ -29,12 +29,14 @@ Specifying a minimum node in engines is optional, but a good signal to use:
 
 ### type: "module"
 
-If you plan to use `type: "module"` in your package.json, you will have to use `babel.config.json` and `jest.config.json` _instead of_ `babel.config.js` and `jest.config.js`. If you try and use `.js` files, you will get the following error:
+If you plan to use `type: "module"` in your package.json, you will have to either use `babel.config.json` and/or `jest.config.json` _instead of_ `babel.config.js` and/or `jest.config.js`, or rename them to have a `.cjs` extension instead of a `.js` extension. If you try and use `.js` files, you will get the following error:
 
 ```
 ReferenceError: module is not defined in ES module scope
 This file is being treated as an ES module because it has a '.js' file extension and '/.../package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
 ```
+
+I have `babel.config.cjs` and `jest.config.json` in this project to show an example of each. I just as easily could have reversed it and done `babel.config.json` and `jest.config.cjs`. The point is that `module.exports=` doesn't work in esm modules, and just using an `export` statement instead also doesn't work (I didn't bother to figure out how to do the whole thing with just an export statement since `cjs` and/or `json` was a perfectly adequate solution. Feel free to open a PR though!)
 
 ## babel.config.json
 
