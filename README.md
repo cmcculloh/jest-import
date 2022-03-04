@@ -1,4 +1,4 @@
-#jest-import
+# jest-import
 
 The purpose of this repo is to document how to properly use jest with esm import statements
 
@@ -26,6 +26,8 @@ Specifying a minimum node in engines is optional, but a good signal to use:
     "node": ">=12"
   }
 ```
+
+### type: "module"
 
 If you plan to use `type: "module"` in your package.json, you will have to use `babel.config.json` and `jest.config.json` _instead of_ `babel.config.js` and `jest.config.js`. If you try and use `.js` files, you will get the following error:
 
