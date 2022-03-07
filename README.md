@@ -55,7 +55,7 @@ At minimum, you will need to specify the following in your babel.config.json:
 
 ## jest.config.json
 
-At minimum, you will need to specify the following in your babel.config.json:
+At minimum, you will need to specify the following in your jest.config.json:
 
 ```
 {
