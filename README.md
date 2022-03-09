@@ -54,7 +54,7 @@ At minimum, you will need to specify the following in your babel.config.json:
 
 ### with typescript
 
-If your project includes typescript, you will need to add the `@babel/preset-typescript` preset:
+If your project includes typescript, you will need to add the `@babel/preset-typescript` preset (and, of course, run `yarn add --dev @babel/preset-typescript`):
 
 ```
 {
