@@ -52,6 +52,23 @@ At minimum, you will need to specify the following in your babel.config.json:
 }
 ```
 
+### with typescript
+
+If your project includes typescript, you will need to add the `@babel/preset-typescript` preset:
+
+```
+{
+    presets: [
+        [
+            "@babel/preset-env",
+            {
+                targets: {node: 'current'}
+            }
+        ],
+        '@babel/preset-typescript'
+    ]
+}
+```
 
 ## jest.config.json
 
@@ -64,8 +81,73 @@ At minimum, you will need to specify the following in your jest.config.json:
     ]
 }
 ```
+*NOTE*: Not only will packages that you depend on that use `import` statements need to be specified here, but any packages that _those_ packages depend on that use `import` will need to be specified here.
 
-*NOTE*: Not only will packages that you depend on that use `import` statements need to be specified here, but any packages that _those_ packages depend on that use `import` will need to be specified here. These aren't terribly difficult to track down. For instance, if you remove the ignorePatterns from this project, you will get the following error when you run `yarn jest`:
+## troubleshooting errors:
+
+### Environment
+
+If you get the error "The error below may be caused by using the wrong test environment", just add `jsdom` as your test environment in your jest.config.js file.
+
+```
+  testEnvironment: "jsdom",
+```
+
+### Jest encountered an unexpected token
+
+The two main reasons I've encountered for getting this error are either you are trying to use ts-jest, or your are ignoring all node_modules.
+
+#### Due to attempting to use ts-jest
+
+If you get the following error:
+
+```
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+
+    Details:
+
+    jest-import/__tests__/utils.test.js:1
+    ({"Object.<anonymous>":function(module,exports,require,__dirname,__filename,jest){import { unmountComponentAtNode } from "react-dom";
+                                                                                      ^^^^^^
+
+    SyntaxError: Cannot use import statement outside a module
+
+      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1728:14)
+```
+
+It is probably because you have `preset: 'ts-jest',` in your `jest.config.js` file. Comment that out and you should be good to go.
+
+#### Due to node_modules Ignore Patterns
+
+As the error suggests, by default "node_modules" folder is ignored by transformers. This is a problem (and is _the_ problem this repo actually exists to demonstrate the solution for). It is easily fixed though by correctly defining your `transformIgnorePatterns`:
+
+```
+{
+    "transformIgnorePatterns": [
+        "node_modules/(?!(npm-package|names|go-here)/)"
+    ]
+}
+```
+
+If you remove the ignorePatterns from this project, you will get the following error when you run `yarn jest`:
 
 ```
 Jest encountered an unexpected token
