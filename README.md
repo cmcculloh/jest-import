@@ -52,9 +52,9 @@ At minimum, you will need to specify the following in your babel.config.json:
 }
 ```
 
-### with typescript
+### with typescript and/or react
 
-If your project includes typescript, you will need to add the `@babel/preset-typescript` preset (and, of course, run `yarn add --dev @babel/preset-typescript`):
+If your project includes typescript/react, you will need to add the `@babel/preset-typescript` and/or '@babel/preset-react' preset (and, of course, run `yarn add --dev @babel/preset-typescript` and/or `yarn add --dev @babel/preset-react`):
 
 ```
 {
@@ -65,7 +65,8 @@ If your project includes typescript, you will need to add the `@babel/preset-typ
                 targets: {node: 'current'}
             }
         ],
-        '@babel/preset-typescript'
+        '@babel/preset-typescript',
+        '@babel/preset-react'
     ]
 }
 ```
