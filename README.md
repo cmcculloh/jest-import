@@ -13,6 +13,7 @@ At the minimum, you will need to have the following devDependencies:
 
 ```
   "devDependencies": {
+    "@babel/plugin-syntax-import-assertions": "^7.17.12",
     "@babel/preset-env": "^7.16.11",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1"
@@ -23,7 +24,7 @@ Specifying a minimum node in engines is optional, but a good signal to use:
 
 ```
   "engines": {
-    "node": ">=12"
+    "node": ">=16.15"
   }
 ```
 
