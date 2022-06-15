@@ -5,7 +5,8 @@
   "exports": "./index.js",
   "license": "MIT",
   "dependencies": {
-    "string-width": "^5.1.2"
+    "string-width": "^5.1.2",
+    "test-json-import": "^1.0.2"
   },
   "devDependencies": {
     "@babel/plugin-syntax-import-assertions": "^7.17.12",

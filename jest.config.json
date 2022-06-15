@@ -1,5 +1,5 @@
 {
     "transformIgnorePatterns": [
-        "node_modules/(?!(string-width|strip-ansi|ansi-regex)/)"
+        "node_modules/(?!(string-width|strip-ansi|ansi-regex|test-json-import)/)"
     ]
 }
