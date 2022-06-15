@@ -8,11 +8,12 @@
     "string-width": "^5.1.2"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-import-assertions": "^7.17.12",
     "@babel/preset-env": "^7.16.11",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16.15"
   }
 }
